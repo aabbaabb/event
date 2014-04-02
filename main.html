@@ -1,0 +1,355 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta name="keywords" content="stu, event, plateform, 活动, 平台, 复旦学生网, 活动平台">
+	<title>活动平台</title>
+	<link rel="stylesheet" type="text/css" href="css/smoothness/jquery-ui-1.10.3.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="css/reset.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+	
+	<script type="text/javascript" src="js/jquery-1.9.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/album.js"></script>
+
+	
+	
+	
+	
+</head>
+<body>
+<div id="header-click"></div>
+<div id="photo-cover"></div>
+<div id="photo-cover-show">
+	<div id="detail-left-arrow" class="detail-arrow"></div>
+	<p id="detail-intro"></p>
+	<p id="detail-index"></p>
+
+	<div id="detail-right-arrow" class="detail-arrow"></div>
+</div>
+
+
+<div id="total-wrap" >
+	<div id="join-time">
+	</div>
+	<div id="join-time-wrap">
+		<div id="join-time-bg"></div>
+		<div id="join-time-content">
+			
+		</div>
+		<div id="join-time-confirm-wrap">
+		</div>
+	</div>
+	<div id="nav">
+		<a href="http://stu.fudan.edu.cn">
+			<div id="logo"><img src="img/logo.png" alt="" /></div>
+		</a>
+		<div id="nav-item">
+			<!--<div class="nav-num-icon">
+				<img src="img/nav-icon-num.png" alt="" />
+			</div>
+			<p class="nav-num">23</p>
+			<div class="nav-icon">
+				<p class="chi">提醒</p>
+			</div>-->
+			<div class="nav-icon"><p class="chi" id="personal-activity">我的活动</p></div>
+			<div class="nav-icon" id="username-wrap"><p class="chi" id="username"></p></div>
+			<a href="http://stu.fudan.edu.cn/auth/auth.aspx?returnurl=http://stu.fudan.edu.cn/event/auth.aspx" id="login" class="nav-icon"><p class="chi">登录</p></a>
+			<a href="http://stu.fudan.edu.cn/user/register" id="register" class="nav-icon"><p class="chi">注册</p></a>
+		</div>
+		
+	</div>
+
+	<div id="login-addition-box" class="header-addition">
+			<ul>
+				<li id="personal-inf">账户管理</li>
+				<a href="logout.aspx"><li id="logout">注销</li></a>
+				
+			</ul>
+		</div>
+	<div id="header" >
+		<div id="emp">
+		</div>
+		<div id="header-content">
+			<table>
+			<tr id="banner-normal">
+				<td class="td-normal td-normal-click" id="album-detail-title">活动相册</td>
+				<td class="td-normal" >今天</td>
+				<td class="td-normal" >明天</td>
+				<td class="td-normal" >本周</td>
+				<td class="td-normal" >下周</td>
+				<td class="td-normal td-normal-click" >全部</td>
+				<td class="td-normal" id="td-short" >>></td>
+				<td id="datepicker-header"><input class="datepicker" /></td>
+				<td id="search">
+					<div id="search-img"></div>
+					<input type="text" name="search" />
+					
+				</td>
+			</tr>
+			
+			</table>
+			<table>
+				<tr id="banner-user">
+				<td class="td-normal2 td-normal2-click" id="attend-button" >我参加的</td>
+				<td class="td-normal2" id="interest-button">我感兴趣</td>
+				<td class="td-normal2" id="raise-button">我发起的</td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+	<div id="main-wrap">
+	<div id="main-content-wrap">
+		<div id="leftside">
+			<div id="leftside-toppic">
+				<div id="leftside-toppic1" title="新建活动">
+				</div>
+				<!--<div id="leftside-toppic2">
+					
+				</div>-->
+			</div>
+			<div id="leftside-tag">
+				<ul>
+					<li class="purple">	
+						<p>全部</p>
+					</li>
+					<li class="red more">
+						
+						<p>讲座</p>
+					</li>
+					<li class="addition" id="lecture-addition">
+						<ul>
+							<div class="li-wrap"><li class="sub1">
+								<p></p><p>人文</p>
+							</li></div>
+							<div class="li-wrap"><li class="sub2"><p></p><p>社政</p></li></div>
+							<div class="li-wrap"><li class="sub1"><p></p><p>科技</p></li></div>
+							<div class="li-wrap"><li class="sub2"><p></p><p>经管</p></li></div>
+							<div class="li-wrap"><li class="sub1"><p></p><p>艺术</p></li></div>
+							<div class="li-wrap"><li class="sub2"><p></p><p>交流</p></li></div>
+							<div class="li-wrap"><li class="sub1"><p></p><p>其他</p></li></div>
+						</ul>
+					</li>
+				
+					<li class="orange more"><p></p><p>出行</p></li>
+					<li class="addition" id="outgoing-addition">
+						<ul>
+							
+							<div class="li-wrap"><li class="sub1"><p></p><p>公益</p></li></div>
+							<div class="li-wrap"><li class="sub2"><p></p><p>聚会</p></li></div>
+							<div class="li-wrap"><li class="sub1"><p></p><p>运动</p></li></div>
+							<div class="li-wrap"><li class="sub2"><p></p><p>旅行</p></li></div>
+							<div class="li-wrap"><li class="sub1"><p></p><p>其他</p></li></div>
+							
+						</ul>
+					</li>
+					<li class="yellow more"><p></p><p>演出</p></li>
+					<li class="addition" id="performance-addition"></li>
+					<li class="green more"><p></p><p>比赛</p></li>
+					<li class="addition" id="contest-addition">
+						<ul>
+							<div class="li-wrap"><li class="sub1"><p></p><p>校内</p></li></div>
+							<div class="li-wrap"><li class="sub2"><p></p><p>校际</p></li></div>
+						</ul>
+					</li>
+					<li class="sky more"><p></p><p>线上</p></li>
+					<li class="addition" id="online-addition">
+						<ul>
+							<div class="li-wrap"><li class="sub1">
+								<p></p>
+								<p>招募</p>
+							</li></div>
+								<div class="li-wrap"><li class="sub2">
+								<p></p>
+								<p>STU</p>
+							</li></div>
+								<div class="li-wrap"><li class="sub1">
+								<p></p>
+								<p>其他</p>
+							</li></div>
+						</ul>
+					</li>
+					<li class="other more"><p></p><p>其他</p></li>
+					
+				</ul>
+			</div>
+		</div>
+		
+
+		
+		<div id="main-content-more">
+
+			<div id="user-content">
+				<div id="user-to-attend-wrap">
+
+					<div id="user-to-attend" class="future">
+						
+					</div>
+					<div class="user-navbar">
+						<div class="user-arrow user-left-arrow"></div>
+							<div class="user-navbar-num user-navbar-num-click">1</div>
+						<div  class="user-arrow user-right-arrow"></div>
+					</div>
+					<br>
+				</div>
+				
+
+				<div id="user-interest-wrap">
+
+					<div id="user-interest" class="future">
+						
+					</div>
+					<div class="user-navbar">
+						<div class="user-arrow user-left-arrow"></div>
+							<div class="user-navbar-num user-navbar-num-click">1</div>
+						<div  class="user-arrow user-right-arrow"></div>
+					</div>
+					<br>
+				</div>
+				<div id="user-raise-wrap">
+
+					<div id="user-raise" class="future">
+						
+					</div>
+					<div class="user-navbar">
+						<div class="user-arrow user-left-arrow"></div>
+							<div class="user-navbar-num user-navbar-num-click">1</div>
+						<div  class="user-arrow user-right-arrow"></div>
+					</div>
+					<br>
+				</div>
+				
+			</div>	
+
+			<div id="main-content">
+				<div id="album-detail">
+					<div id="album-introduction">
+						<div id="album-title"></div>
+						<div class="upload-pic">
+							上传图片
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<p id="no-content-alert">呀!活动有点少呀~试着换一天或者换个分类吧~</p>
+			<div id='more'><p>...</p></div>
+		</div>
+		<div id="top" class="nav-button">
+		</div>
+		<div id="back" class="nav-button">
+		</div>
+	</div>
+	</div>
+	<div id="footer">
+		<div id="footer-content">
+			<div id="footer-category">
+				<ul>
+					<!--<a href="http://stu.fudan.edu.cn/event/comingsoon.html"><li>项目动态</li></a>-->
+					<a href="http://stu.fudan.edu.cn/joinus/aboutus.aspx" ><li>关于我们</li></a>
+					<a href="mailto:stu.fudan@gmail.com"><li>联系我们</li></a>
+					<a href="http://stu.fudan.edu.cn/joinus/default.aspx"><li>加入我们</li></a>
+				</ul>
+			</div>
+			<div id="footer-inf">
+				<ul>
+					<li class="white">Copyright © 2010-2013</li>
+					<li class="white">复旦学生网 版权所有</li>
+					<li class="footer-purple">建议使用Chrome、Firefox或IE9以上版本浏览器访问</li>
+				</ul>
+			</div>
+			<div id="share-display-none">
+				<a class="jiathis_button_tsina share-addition-icon sina btn">
+				</a>
+				<a  class="jiathis_button_douban share-addition-icon douban btn">
+				</a>
+				<a class="jiathis_button_tqq share-addition-icon tencent btn">
+				</a>
+				<a class="jiathis_button_renren share-addition-icon renren btn">
+				</a>
+			</div>
+
+			
+		</div>
+	</div>
+	
+</div>
+
+<script type="text/x-template" id="template">
+	<div class="main-content-each clearfix">
+		<div class="main-content-img" title="查看原图">
+			
+		</div>
+		<div class="main-content-words">
+			<div class="main-content-title" id="${Id}">
+				<p class="category">【${Type}】</p>
+				<p class="subcategory">【${Subtype}】</p>
+				<p class="title" >${Title}</p>
+	
+			</div>	
+			<div class="main-content-article">
+				<ul>
+					<li class="clearfix">
+						
+	
+					</li>
+					<li class="clearfix">
+						<div class="intro">时间</div>
+						<div class="time"></div>
+					</li>
+					<li class="location-wrap clearfix">
+						<div class="intro">地点</div>
+						<div class="position">${Location}</div>
+					</li>
+					<li class="content-addition clearfix">
+						<a  href="javascript:void(0)" title="我感兴趣" class="love-icon icon-num"></a>
+						<p class="love-num">${love-num}</p>
+						<a  href="javascript:void(0)" title="我要参加" class="pin-icon icon-num"></a>
+						<p class="pin-num">${pin-num}</p>
+						<a  href="javascript:void(0)" class="reply-icon icon-num btn" >回应</a>
+						<p class="reply-num">${reply-num}</p>
+						<a  href="javascript:void(0)" class="share-icon icon-num btn" >分享</a>
+						<p class="share-num">${share-num}</p>
+						<div class="share-addition clearfix">
+							<a class="share-addition-icon sina btn">
+							</a>
+							<a  class="share-addition-icon douban btn">
+							</a>
+							<a class="share-addition-icon tencent btn">
+							</a>
+							<a class="share-addition-icon renren btn">
+							</a>
+						</div>
+						
+						
+						
+					</li>
+				</ul>
+			</div>	
+			<div class="days-left">
+				<ul>
+				</ul>
+			</div>
+		</div>
+	
+	</div>
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10296613-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+添加大巴
+RequireOrganization.aspx
+参数
+Name,Type
+成功返回1
+通过了以后可以通过
+ApplyMinorOrg
+NickName，OrgName添加次级管理员
+
+看当前用户有哪些管理员权限可以通过
+ViewUserOrg.aspx
+返回值你已经懂了
+
+addevent接受新的传参：OrgName，放在第一层
+OrgName会自动判定用户是否属于这个OrgName的管理员
+并且会在符合的情况下自动覆盖Publisher

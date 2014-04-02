@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<all-event>
+<event>
+	<hot>1</hot>
+	<category>比赛</category>
+	<title>从毛到无：巴迪欧的“第二现代性”、佛教的马克斯什么乱七八糟我打的还不够长这些应该是省略号</title>
+	<pic>css/img/picture.gif</pic>
+	<tag>new</tag>
+	<speaker-name>金文</speaker-name>
+	<speaker-title>博士</speaker-title>
+	<time>XXX年XXX月</time>
+	<position>文科楼424室</position>
+	<love-num>167</love-num>
+	<pin-num>133</pin-num>
+	<reply-num>34</reply-num>
+	<share-num>177</share-num>
+	<time-left>
+		<day>7</day>
+		<hour>16</hour>
+		<min>45</min>
+	</time-left>
+	<num-left>
+		65
+	</num-left>
+	
+</event>
+<event>
+	<hot>1</hot>
+	<category>讲座</category>
+	<title>从毛到无：巴迪欧的“第二现代性”、佛教的马克斯什么乱七八糟我打的还不够长这些应该是省略号</title>
+	<pic>css/img/picture.png</pic>
+	<tag>需报名</tag>
+	<speaker-name>金文</speaker-name>
+	<speaker-title>博士</speaker-title>
+	<time>XXX年XXX月</time>
+	<position>文科楼424室</position>
+	<love-num>167</love-num>
+	<pin-num>133</pin-num>
+	<reply-num>34</reply-num>
+	<share-num>177</share-num>
+</event>
+<event>
+	<hot>1</hot>
+	<category>出行</category>
+	<title>从毛到无：巴迪欧的“第二现代性”、佛教的马克斯什么乱七八糟我打的还不够长这些应该是省略号</title>
+	<pic>css/img/picture.gif</pic>
+	<tag>已结束</tag>
+	<speaker-name>金文</speaker-name>
+	<speaker-title>博士</speaker-title>
+	<time>XXX年XXX月</time>
+	<position>文科楼424室</position>
+	<love-num>167</love-num>
+	<pin-num>133</pin-num>
+	<reply-num>34</reply-num>
+	<share-num>177</share-num>
+	<review>1</review>
+	
+</event>
+</all-event>

@@ -1,0 +1,58 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>上传图片</title>
+	 <link rel="stylesheet" type="text/css" href="css/reset.css" media="all" />
+	 <link rel="stylesheet" type="text/css" href="css/addevent-style.css" media="all" />
+	 <script type="text/javascript" src="js/jquery-1.9.min.js"></script>
+	 <script type="text/javascript" src="js/jquery.form.js"></script>
+	 <script type="text/javascript" src="js/albumpage.js"></script>
+
+</head>
+<body>
+	
+	<div id="container-wrap">
+		<div id="title">
+			<span id="title-chi">相册</span>
+			<span id="title-eng">ALBUM</span>
+		</div>
+		<div id="container">
+			<div id="album-container" class="page">
+				<div id="album-topic">
+					上传图片
+				</div>
+				<div id="album-preview">
+					
+				</div>
+				<form id="album-form" enctype="multipart/form-data" method="post">
+				<div id="choose-pic-wrap">
+					<div id="choose-pic"></div>
+					<div id="album-alert">每次上传图片总大小最多可以为4MB</div>
+					<input type="submit" id="album-submit"/> 
+					<input id="album1" class="album-input" type="file" name="album"/>
+				</div>
+				</form>
+			</div>
+		</div>
+		<div id="confirm">
+			<div class="confirm-each" id="prev"><p>手滑了</p></div>
+			<div class="confirm-each" id="next"><p>开始上传</p></div>
+		</div>
+	</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10296613-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

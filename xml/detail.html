@@ -1,0 +1,104 @@
+<div id="main-content-detail" name=${Id}>
+	<div id="detail-left" class="clearfix">
+
+		<div id="detail-img" title="查看原图">
+			<div class='hot2'>HOT</div><img class='hot-corner2' src='img/corner2.png' />
+			<img src=${pic} alt=''>
+		</div>
+		<div id="detail-icon">
+			<a  href="javascript:void(0)"class="love-icon icon-num"  title="我感兴趣" class="detail-icon-each"></a>
+			<p class="love-num">${love-num}</p>
+			<a  href="javascript:void(0)"class="pin-icon icon-num"  title="我要参加" class="detail-icon-each"></a>
+			<p class="pin-num">${pin-num}</p>
+			
+		</div>
+		<div id="detail-time">
+			<div><span class="intro">开始</span><span class="StartTime">${StartTime}</span></div>
+			<div><span class="intro">结束</span><span class="EndTime">${EndTime}</span></div>
+			<div id="location-wrap"><div class="intro">地点</div><div class="Location">${Location}</div></div>
+		</div>
+		<!--<div class="detail-days-left">
+			<p>离报名截止日期还有31日6时45分</p>
+		</div>
+		<div class="detail-days-left">
+			<p>还有XXX个空位</p>
+		</div>-->
+
+
+	</div>
+	<div id="detail-right">
+		<div class="main-content-title" id="detail-title">
+			<p>
+				<span class="category">【${Type}】</span>
+				<span class="subcategory">【${Subtype}】</span>
+				<span class="title-detail">${Title}</span>
+				<span class="subtitle">——${Subtitle}</span>
+			</p>
+		</div>
+		<div id="detail-content">
+			<p class="detail-raiser clearfix">
+				<span class="intro">主办</span>
+				<span class="raiser"></span>
+			</p>
+
+			<p id="series-wrap" class="clearfix"><span class="intro">系列</span><span class="series">${series}</span></p>
+			<p id="brand-wrap" class="clearfix"><span class="intro">品牌</span><span class="brand">${brand}</span></p>
+			<p class="detail-speaker clearfix"><span class="intro">主讲</span><span class="speaker"></span></p>
+			<div id="speaker-inf-wrap">
+				<p><span class="intro">主讲人信息</span></p>
+				<p class="speaker-inf">${speakerinf}</p>
+			</div>
+			<p><span class="intro">内容简介</span></p>
+			<p class="context"></p>
+			<div id="album">
+				<div id="album-top">
+					<p><span class="intro">活动相册</span></p>
+					<p id="photo-num"></p>
+					<div class="upload-pic">
+						上传图片
+					</div>
+				</div>
+				<div id="album-display">
+					<div id="left-arrow"><img src="img/left.png" alt="" /></div>
+						<canvas id="myCanvas" width="420" height="100"></canvas>
+					<div id="right-arrow"><img src="img/right.png" alt="" /></div>
+				</div>
+			</div>
+
+			<!--<p><span class="intro">视频</span><span class="video" href="#">${video}</span></p>
+			<p><span class="intro">音频</span><span class="audio" href="#">${audio}</span></p>-->
+			
+			<div id="replybox-stretch">
+				<div id="replybox-corner"></div>
+				<div id="replybox-content">
+					<div id="replybox-reply">
+
+						<form action="" id="detail-form" name="detailform">
+							<textarea name="detailtextarea" id="detail-textarea"></textarea>
+							
+							<input type="button" id="detail-response" value="回应" />
+							<div id="detail-share">
+								<a href="javascript:void(0)" class="share-addition-icon share-detail sina">
+								</a>
+								<a href="javascript:void(0)"  class="share-addition-icon share-detail douban">
+								</a>
+								<a href="javascript:void(0)" class="share-addition-icon share-detail tencent">
+								</a>
+								<a href="javascript:void(0)" class="share-addition-icon share-detail renren">
+								</a>
+							</div>
+							<div id="alsoshare-wrap">
+								<p>同时分享</p>
+								<input type="checkbox" id="alsoshare" />
+							</div>
+						</form>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>	
+	</div>
+	<div style="clear:both"></div>
+</div>

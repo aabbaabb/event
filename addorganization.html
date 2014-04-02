@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>组织账号</title>
+	<link rel="stylesheet" type="text/css" href="css/smoothness/jquery-ui-1.10.3.custom.css"/>
+	 <link rel="stylesheet" type="text/css" href="css/reset.css" media="all" />
+	 <link rel="stylesheet" type="text/css" href="css/addevent-style.css" media="all" />
+	 <script type="text/javascript" src="js/jquery-1.9.min.js"></script>
+	 <script type="text/javascript" src="js/checklogin.js"></script>
+	<script type="text/javascript" src="js/addorg.js"></script>
+
+</head>
+<body>
+	<div id="container-wrap">
+		<div id="title">
+			<span id="title-chi">组织账号</span>
+			<span id="title-eng">Organization</span>
+		</div>
+		<div id="container">
+			<ul id="addorg" class="page">
+				<li>
+					<div class="left">
+						<p>组织名称</p>
+					</div>
+					<div class="right">
+						<div class="input-wrap">
+							<input type="text" id="orgname" class="normal-input"/>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="left">
+						<p>组织类型</p>
+					</div>
+					<div class="right">
+						<div class="input-wrap">
+							<div class="category-each choosebox" id="org-category">
+								<div class="category-show">
+									<p>请选择</p>
+								</div>
+								<div class="category-button"></div>
+								<div class="category-item">
+									<ul>
+										<li>社团</li>
+										<li>团委</li>
+										<li>学生会</li>
+										<li>团学联</li>
+										<li class="last">其他</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="check-alert">
+				</li>
+			</ul>
+		</div>
+		<div id="confirm">
+			<div class="join-time-confirm-style" id="join-time-confirm"><p>确定</p></div>
+		</div>
+	</div>
+</body>
+</html>
