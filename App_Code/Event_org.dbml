@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Darili" Class="Event_orgDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.73.4.41;Initial Catalog=Darili;Persist Security Info=True;User ID=darili" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="416ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Event_Org" Member="Event_Org">
+    <Type Name="Event_Org">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NickName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Org_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="IsProved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Event_Org_Event_MinorOrg" Member="Event_MinorOrg" ThisKey="Org_Name" OtherKey="Org_Name" Type="Event_MinorOrg" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event_MinorOrg" Member="Event_MinorOrg">
+    <Type Name="Event_MinorOrg">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Org_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NickName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Event_Org_Event_MinorOrg" Member="Event_Org" ThisKey="Org_Name" OtherKey="Org_Name" Type="Event_Org" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

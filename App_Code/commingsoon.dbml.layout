@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="commingsoon">
+  <DataContextMoniker Name="/commingsoonDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6ea49213-9b85-46f0-b803-9bcbb41e653e" absoluteBounds="2.5, 3, 2, 1.1111067708333333">
+      <DataClassMoniker Name="/commingsoonDataContext/Event_commingsoon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da029044-cced-40d8-810b-468c1b4955b0" absoluteBounds="2.515, 3.46, 1.9700000000000002, 0.55110677083333326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

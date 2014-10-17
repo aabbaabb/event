@@ -1,4 +1,4 @@
-﻿	var isOut = true;
+	var isOut = true;
 	var isIn = false;
 	var isOut2 = true;
 	var isIn2 = false;
@@ -101,18 +101,18 @@
 			//$("#back").hide();
 			$("#join-time-confirm").show();
 			$("#picstyle-wrong").remove();
-			if(viewflag==1){
-				if(org==false)
-					picstyle2(picok2,"活动",data);
-				else{
+			if((viewflag==1)||(viewflag==9)){	//9:modified
+				if(org==true)
 					picstyle2(picok,"活动",data);
+				else{
+					picstyle2(picok2,"活动",data);
 				}
 			}	
-			else{
+			if(viewflag!=1&&viewflag!=9){
 				if(geturlid()&&geturlid()!=""){
 					picstyle2(picok3,"活动",data);
 				}
-				picstyle2(picok,"活动",data);
+				picstyle2(picok2,"活动",data);
 			}
 		}
 		function checklogin(){
@@ -175,6 +175,7 @@
 			$("#event-alert-wrap .input").hide();
 			$(".sub-category").hide();
 			$("#set-numlimit input").hide();
+			$("#act-series-cat .category-item li:first").trigger("click");
 			var myDate = new Date();
 			var query = "";
 			query = query + myDate.getFullYear() + "-";
@@ -416,14 +417,15 @@
 					}
 					addinput(json.speakerinf,$("#speaker-inf"));
 					addinput(json.series,$("#event-series-input"));
-					addselect(json.brand,$("#act-series-cat"));
+					if(json.brand!="其他"&&json.brand!=null)
+						addselect(json.brand,$("#act-series-cat"));
 					for(i=0;i<json.Publishers.length;i++){
 						if(i>0){
 							$("#add-raiser-lec").trigger("click");
 						}
 						addinput(json.Publishers[i],$("#page2-lec2 .main-raiser-input"));
 						$("#page2-lec2 .main-raiser-confirm").trigger("click");
-					}
+					}x
 					if(json.Context)
 						addinput(json.Context,$("#page2-lec2 #act-intro"));
 					if(json.NeedSubscribe=="true")
@@ -583,7 +585,7 @@
 			}
 			else
 				tempurl="http://stu.fudan.edu.cn/event/test_addevent.aspx";
-			console.log(data1);
+			//console.log(data1);
 			$.ajax({
 
 				url: tempurl,
@@ -596,7 +598,10 @@
 				$("#add-pic-local-form").attr("action", "");
 				//console.log(msg);
 				if(msg.success=="1"||msg.success==1){
-					viewflag=msg.ViewFlag;
+					if(msg.ViewFlag)
+						viewflag=msg.ViewFlag;
+					else
+						viewflag=9;	//modified
 					$("#add-pic-local-form").submit();
 
 				}

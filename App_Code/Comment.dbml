@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Darili" Class="CommentDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.73.4.41;Initial Catalog=Darili;Persist Security Info=True;User ID=darili" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="416ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Event_Comments" Member="Event_Comments">
+    <Type Name="Event_Comments">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Comment_Detail" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Comment_EventId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment_Maker" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment_PublishTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

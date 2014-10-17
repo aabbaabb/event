@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Darili" Class="Darili_LinqDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.73.4.41;Initial Catalog=Darili;Persist Security Info=True;User ID=darili" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="416ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Event_Album" Member="Event_Album">
+    <Type Name="Event_Album">
+      <Column Name="eid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="aid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="filename" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="EventMain_Event_Album" Member="EventMain" ThisKey="eid" OtherKey="Id" Type="EventMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event_Album" Member="Event_Album1">
+    <Type Name="Event_Album1">
+      <Column Name="eid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="aid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="filename" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="EventMain_Event_Album1" Member="EventMain" ThisKey="eid" OtherKey="Id" Type="EventMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event_BM" Member="Event_BM">
+    <Type Name="Event_BM">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="detail" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="numlimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EventMain_Event_BM" Member="EventMain" ThisKey="id" OtherKey="Id" Type="EventMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event_LectureEx" Member="Event_LectureEx">
+    <Type Name="Event_LectureEx">
+      <Column Name="event_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Brand" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="speakerinf" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="EventMain_Event_LectureEx" Member="EventMain" ThisKey="event_id" OtherKey="Id" Type="EventMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EventMain" Member="EventMain">
+    <Type Name="EventMain">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PublishTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Publisher" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ViewFlag" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Context" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Subtitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SubType" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Series" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="EventMain_Event_Album" Member="Event_Album" ThisKey="Id" OtherKey="eid" Type="Event_Album" />
+      <Association Name="EventMain_Event_Album1" Member="Event_Album1" ThisKey="Id" OtherKey="eid" Type="Event_Album1" />
+      <Association Name="EventMain_Event_BM" Member="Event_BM" ThisKey="Id" OtherKey="id" Type="Event_BM" Cardinality="One" />
+      <Association Name="EventMain_Event_LectureEx" Member="Event_LectureEx" ThisKey="Id" OtherKey="event_id" Type="Event_LectureEx" Cardinality="One" />
+      <Association Name="EventMain_Lecture" Member="Lecture" ThisKey="Id" OtherKey="Event_Id" Type="Lecture" />
+      <Association Name="EventMain_Host" Member="Host" ThisKey="Id" OtherKey="Event_id" Type="Host" />
+      <Association Name="EventMain_Event_MultipleTime" Member="Event_MultipleTime" ThisKey="Id" OtherKey="Event_Id" Type="Event_MultipleTime" />
+      <Association Name="EventMain_Event_Live" Member="Event_Live" ThisKey="Id" OtherKey="eid" Type="Event_Live" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lecture" Member="Lecture">
+    <Type Name="Lecture">
+      <Column Name="Event_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Speaker" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Class" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="sub_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="EventMain_Lecture" Member="EventMain" ThisKey="Event_Id" OtherKey="Id" Type="EventMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Host" Member="Host">
+    <Type Name="Host">
+      <Column Name="Event_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Host_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="EventMain_Host" Member="EventMain" ThisKey="Event_id" OtherKey="Id" Type="EventMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event_MultipleTime" Member="Event_MultipleTime">
+    <Type Name="Event_MultipleTime">
+      <Column Name="Event_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsRoutine" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SubTime_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="routine" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="EventMain_Event_MultipleTime" Member="EventMain" ThisKey="Event_Id" OtherKey="Id" Type="EventMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event_Live" Member="Event_Live">
+    <Type Name="Event_Live">
+      <Column Name="eid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="channelV_vid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EventMain_Event_Live" Member="EventMain" ThisKey="eid" OtherKey="Id" Type="EventMain" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

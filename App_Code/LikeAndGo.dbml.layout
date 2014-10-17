@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LikeAndGo">
+  <DataContextMoniker Name="/LikeAndGoDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b8ad1071-8ae8-40c3-b64d-1d0a62c77259" absoluteBounds="1.75, 3.25, 2, 1.4483463541666668">
+      <DataClassMoniker Name="/LikeAndGoDataContext/Event_Like" />
+      <nestedChildShapes>
+        <elementListCompartment Id="114594c1-9d00-4fc3-a8d0-38a22451b1a2" absoluteBounds="1.7650000000000001, 3.71, 1.9700000000000002, 0.88834635416666674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bf51b358-4931-4b27-bef3-47a423912d67" absoluteBounds="1.25, 1, 2, 1.6169661458333331">
+      <DataClassMoniker Name="/LikeAndGoDataContext/Event_Subscription" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c411dec-ccc8-4e19-9814-9fb7736a3385" absoluteBounds="1.2650000000000001, 1.46, 1.9700000000000002, 1.0569661458333333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a1ba6c7d-7499-43bf-80eb-67bd68df4a88" absoluteBounds="4.25, 1.875, 2, 1.1111067708333333">
+      <DataClassMoniker Name="/LikeAndGoDataContext/Event_Subscription_Parameters" />
+      <nestedChildShapes>
+        <elementListCompartment Id="44e74546-e2a5-4c99-9586-53982c5f4ca5" absoluteBounds="4.265, 2.335, 1.9700000000000002, 0.55110677083333326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

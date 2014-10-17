@@ -3,13 +3,31 @@ $(document).ready(function(){
  	var page=0;
  	lastpage=false;
  	var isOut=false;
+ 	var detail=false;
+ 	var lastscrollTop=null;
 	if(isRetina){
 	    $(".small-pic").each(function(){
 	        $(this).attr('src',$(this).attr('data-src-retina'));
 	    })
 	}
 	$('#top').hide();
+	$(".ui-loader").hide();
 	var green="#068a3f",purple="#e20f55",orange="#ff601a",yellow="#ffb400",sky="#2bb2b4",blue="#6584da1";
+	 function setcookie(name,value){  
+        var exp  = new Date();  
+        exp.setTime(exp.getTime() + 2*60*60*1000);  
+        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();  
+    }  
+     
+
+    function getcookie(name){  
+        var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));  
+        if(arr != null){  
+            return (arr[2]);  
+        }else{  
+            return "";  
+        }  
+    }  
 	function style(json){
 		
 		var datatemp=function(){
@@ -73,12 +91,22 @@ $(document).ready(function(){
 	    }
 	}
 	var bind=function(){
+		$("#banner p").click(function(){
+			setcookie("notphone","true");
+			window.location.href="http://stu.fudan.edu.cn/event";
+		})
+		$(".back").click(function(){
+			detail=false;
+			$("#main-page").show();
+			$('html,body').animate({scrollTop:lastscrollTop},0);
+			$("#main-page").animate({"margin-left":"0%"},200);
+			$(".back").hide();
+		});
 		$("#calendar-button").hover(function(){
 			isOut=false;
 		},function(){
 			isOut=true;
 		})
-		
 		$(window).on("touchstart",function(){
 			if($(event.target).parents("#calendar-button").length<=0){
 				$("#calendar-button li").hide();
@@ -97,14 +125,19 @@ $(document).ready(function(){
 			};
 			if(reachBottom()==true&&lastpage==false){
 				//setTimeout(updatemore,1000) ;
-				page=page+1;
-				updatejson(1);
+				if(page==0)
+					page=2;
+				else
+					page=page+1;
+				if(detail==false)
+					updatejson(1);
 				
 			}
 		});
 		//top按钮控制
 		
 		$('#top').click(function(){
+
 			$('html,body').animate({scrollTop:0},0);
 			
 		});
@@ -181,34 +214,49 @@ $(document).ready(function(){
 						if(json.Event[i]){
 							var eventeach=json.Event[i];
 							$("#main-content").append($("#template").html());
-							$(".main-content-each:last").attr("id",eventeach.id);
+							$(".main-content-each:last").attr("id",eventeach.Id);
 							var Type=eventeach.Type;
 							if(eventeach.Subtype!="null"&&eventeach.Subtype!=null)
 								Type=Type+"·"+eventeach.Subtype;
-							$(".category:last").text(Type);
+							$(".main-content-each:last .category").text(Type);
 
 							var title=eventeach.Title;
 							if(eventeach.subTitle!=null){
 								title=title+"————"+eventeach.subTitle;
 							}
-							$(".title:last").text(title);
-							if((eventeach.Location!=null)&&(eventeach.Location!=""))
-								$(".position:last").text(eventeach.Location);
+							$(".main-content-each:last .title").text(title);
+							if((eventeach.Location!=null)&&(eventeach.Location!="")&&(eventeach.Location!=" "))
+								$(".main-content-each:last .position").text(eventeach.Location);
 							else
-								$(".location-wrap:last").hide();
+								$(".main-content-each:last .location-wrap").hide();
 							$(".time:last").text(converttime(eventeach.StartTime));
 							if(eventeach.Speakers==null||eventeach.Speakers.length==0)
-								$(".content-speaker-wrap").hide();
+								$(".main-content-each:last .content-speaker-wrap").hide();
 							else{
 								for(var j=0;j<eventeach.Speakers.length;j++)
-									$(".content-speaker-wrap:last").append("<div class='speaker-each clearfix'><div class='speaker-name'>"+eventeach.Speakers[j].Name+"</div></div>")
+									$(".main-content-each:last .content-speaker-wrap").append("<div class='speaker-each clearfix'><div class='speaker-name'>"+eventeach.Speakers[j].Name+"</div></div>")
 							}
 							var style1=style(eventeach.Type);
-							$(".category:last").css("color",style1.color);
+							$(".main-content-each:last .category").css("color",style1.color);
 							var temp=eventeach.timeleft2;
 							if(temp.min<0||temp.hour<0||temp.day<0){
-								$(".main-content-title:last").append("<span class='alreadyover'>已结束</span> ");
+								$(".main-content-each:last .main-content-title").append("<span class='alreadyover'>已结束</span> ");
 							}
+							$(".main-content-each:last .main-content-title").on("click",function(){
+								detail=true;
+								$(document).on("swiperight",function(){
+									$(document).off("swiperight");
+									$('.back').click();
+								})
+								$(".back").show();
+								$(this).parents(".main-content-each").addClass("click");
+								updatedetail();
+								lastscrollTop=$("body")[0].scrollTop;
+								$("#main-page").animate({"margin-left":"-50%"},200,function(){
+
+									$("#main-page").hide();
+								});
+							})
 
 						}
 					}
@@ -218,9 +266,69 @@ $(document).ready(function(){
 						$("#main-content").append("<div class='alert-none-wrap'><p class='alert-none'>没有更多活动啦</p><p class='alert-none'>再去别处看看吧OωO</p></div>")
 					}
 				}
-			},1000);
+			},200);
 			
 		});
+	}
+	var updatedetail=function(){
+		$.ajax({
+			url:"http://stu.fudan.edu.cn/event/Event_Detail.aspx?id="+$(".main-content-each.click").attr("id"),
+			type:"get",
+			async:true,
+			dataType:"json",
+			success:function(data){
+				data=data.Eventdetail;
+				$(".main-content-each.click").removeClass("click");
+				var picsrc="./g_Poster.aspx?&Thumb=0&id="+data.Id;
+				$(".detail-img").css("visibility","hidden");
+				$(".detail-img").attr("src",picsrc);
+				var image=new Image();
+				image.src=picsrc;
+				image.onload=function(){
+					$(".detail-img").css("visibility","visible");
+				}
+				$(".detail-time-wrap .starttime").text(converttime(data.StartTime));
+				if(data.EndTime){
+					$(".detail-time-wrap .endtime").text(converttime(data.EndTime));
+				}
+				else{
+					$(".detail-time-wrap .endtime-wrap").hide();
+				}
+				if((data.Location!=null)&&(data.Location!="")&&(data.Location!=" "))
+					$(".detail-time-wrap .location").text(data.Location);
+				else
+					$(".detail-time-wrap .location-wrap").hide();
+				if((data.Publishers!=null)&&(data.Publishers.length>0)){
+					$(".detail-raiser").remove();
+					for(i=0;i<data.Publishers.length;i++){
+						$(".detail-raiser-wrap").append("<div class='detail-raiser'>"+data.Publishers[i]+"</div>");
+					}
+				}
+				else
+					$(".detail-raiser-wrap").hide();
+				if((data.Speakers!=null)&&(data.Speakers.length>0)){
+					$(".detail-speaker").remove();
+					for(i=0;i<data.Speakers.length;i++){
+						$(".detail-speaker-wrap").append("<div class='detail-speaker'>"+data.Speakers[i].Name+"</div>");
+					}
+				}
+				else
+					$(".detail-speaker-wrap").hide();
+				$(".detail-content").text(data.Context);
+				var Type=data.Type;
+				if(data.Subtype!="null"&&data.Subtype!=null)
+					Type=Type+"·"+data.Subtype;
+				$(".detail-content-title .category").text(Type);
+
+				var title=data.Title;
+				if(data.Subtitle!=null){
+					title=title+"——"+data.Subtitle;
+				}
+				$(".detail-content-title .title").text(title);
+				var style1=style(data.Type);
+				$(".detail-color").css("color",style1.color);
+			}
+		})
 	}
 	var libind=function(){
 		$("#calendar-button li").off();

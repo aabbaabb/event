@@ -1224,3 +1224,17 @@ input,textarea{
 #container-wrap #container #act-series-cat .category-item li{
 	width:180px;
 }
+.admininput{
+	display:inline-block;
+}
+.admininput input{
+	float:left;
+	margin-top:15px;
+}
+.admininput div{
+	float:left;
+	margin-top:15px;
+}
+.addadmin-wrap{
+	clear:both;
+}

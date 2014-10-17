@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Darili" Class="PosterDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.73.4.41;Initial Catalog=Darili;Persist Security Info=True;User ID=darili" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="416ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Event_Poster" Member="Event_Poster">
+    <Type Name="Event_Poster">
+      <Column Name="Event_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="poster" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="thumb_stream" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="poster_thumb" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

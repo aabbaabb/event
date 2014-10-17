@@ -12,135 +12,132 @@
 	 <script type="text/javascript" src="js/jquery-1.9.min.js"></script>
 	<script type="text/javascript" src="js/jquery.form.js"></script>
 	<script tyoe="text/javascript" src="js/jquery-ui-1.10.3.custom.js"></script>
+	<script tyoe="text/javascript" src="js/jquerymobile.js"></script>
 	<script type="text/javascript" src="js/main-phone.js"></script>
 
 </head>
 <body>
-
+	<div data-role="page" id="total-wrap">
 		<div id="top">
 			<img class="small-pic" src="./img/mobile-top.png" data-src-retina="./img/mobile-top-retina.png" />
 		</div>
 		<img class="back" src="./img/back-mobile.png" data-src-retina="./img/back-mobile-retina.png" />
 		<div id="banner">
+			<p>转到网页版</p>
 			<img class="small-pic" src="./img/mobile-header.png" data-src-retina="./img/mobile-header-retina.png" />
-		</div>
-		<div id="main-page">
-			<div id="top-nav" class="clearfix">
-			<div id="calendar-button">
-				<ul>
-					<li class="clearfix show" id="all">
-						<div class="cat-img-wrap">
-							<img class="small-pic" src="./img/calendar-mobile.png" data-src-retina="./img/calendar-mobile-retina.png" />
 
+		</div>
+		<div id="slide" class="clearfix">
+			<div id="main-page">
+				<div id="top-nav" class="clearfix">
+				<div id="calendar-button">
+					<ul>
+						<li class="clearfix show" id="all">
+							<div class="cat-img-wrap">
+								<img class="small-pic" src="./img/calendar-mobile.png" data-src-retina="./img/calendar-mobile-retina.	png" />
+							</div>
+							<p>全部</p>
+							<img class="small-pic" id="arrow" src="./img/arrow-mobile.png" data-src-retina="./img/arrow-mobile-retina	.png" />
+						</li>
+						<li class="clearfix" id="lec">
+							<div class="cat-img-wrap">
+								<img class="small-pic" src="./img/lec-mobile.png" data-src-retina="./img/lec-mobile-retina.png" />
+							</div>
+							<p>讲座</p>
+						</li>
+						<li class="clearfix" id="out">
+							<div class="cat-img-wrap">
+								<img class="small-pic" src="./img/out-mobile.png" data-src-retina="./img/out-mobile-retina.png" />
+							</div>
+							<p>出行</p>
+						</li>
+						<li class="clearfix" id="per">
+							<div class="cat-img-wrap">
+								<img class="small-pic" src="./img/per-mobile.png" data-src-retina="./img/per-mobile-retina.png" />
+							</div>
+							<p>演出</p>
+						</li>
+						<li class="clearfix" id="con">
+							<div class="cat-img-wrap">
+								<img class="small-pic" src="./img/con-mobile.png" data-src-retina="./img/con-mobile-retina.png" />
+							</div>
+							<p>比赛</p>
+						</li>
+						<li class="clearfix" id="onl">
+							<div class="cat-img-wrap">
+								<img class="small-pic" src="./img/onl-mobile.png" data-src-retina="./img/onl-mobile-retina.png" />
+							</div>
+							<p>线上</p>
+						</li>
+						<li class="clearfix" id="oth">
+							<div class="cat-img-wrap">
+								<img class="small-pic" src="./img/oth-mobile.png" data-src-retina="./img/oth-mobile-retina.png" />
+							</div>
+							<p>其他</p>
+						</li>
+					</ul>
+				</div>
+				<div id="top-nav-button">
+					<div class="top-nav-button-each">
+						<div class='top-nav-button-inside click'>
+							全部
 						</div>
-						<p>全部</p>
-						<img class="small-pic" id="arrow" src="./img/arrow-mobile.png" data-src-retina="./img/arrow-mobile-retina.png" />
-					</li>
-					<li class="clearfix" id="lec">
-						<div class="cat-img-wrap">
-							<img class="small-pic" src="./img/lec-mobile.png" data-src-retina="./img/lec-mobile-retina.png" />
+					</div>
+					<div class="top-nav-button-each">
+						<div class='top-nav-button-inside'>
+							今天
 						</div>
-						<p>讲座</p>
-					</li>
-					<li class="clearfix" id="out">
-						<div class="cat-img-wrap">
-							<img class="small-pic" src="./img/out-mobile.png" data-src-retina="./img/out-mobile-retina.png" />
+					</div>
+					<div class="top-nav-button-each">
+						<div class='top-nav-button-inside'>
+							明天
 						</div>
-						<p>出行</p>
-					</li>
-					<li class="clearfix" id="per">
-						<div class="cat-img-wrap">
-							<img class="small-pic" src="./img/per-mobile.png" data-src-retina="./img/per-mobile-retina.png" />
+					</div>
+					<div class="top-nav-button-each">
+						<div class='top-nav-button-inside'>
+							本周
 						</div>
-						<p>演出</p>
-					</li>
-					<li class="clearfix" id="con">
-						<div class="cat-img-wrap">
-							<img class="small-pic" src="./img/con-mobile.png" data-src-retina="./img/con-mobile-retina.png" />
+					</div>
+					<div class="top-nav-button-each">
+						<div class='top-nav-button-inside'>
+							下周
 						</div>
-						<p>比赛</p>
-					</li>
-					<li class="clearfix" id="onl">
-						<div class="cat-img-wrap">
-							<img class="small-pic" src="./img/onl-mobile.png" data-src-retina="./img/onl-mobile-retina.png" />
-						</div>
-						<p>线上</p>
-					</li>
-					<li class="clearfix" id="oth">
-						<div class="cat-img-wrap">
-							<img class="small-pic" src="./img/oth-mobile.png" data-src-retina="./img/oth-mobile-retina.png" />
-						</div>
-						<p>其他</p>
-					</li>
-				</ul>
-			</div>
-			<div id="top-nav-button">
-				<div class="top-nav-button-each">
-					<div class='top-nav-button-inside click'>
-						全部
 					</div>
 				</div>
-				<div class="top-nav-button-each">
-					<div class='top-nav-button-inside'>
-						今天
-					</div>
-				</div>
-				<div class="top-nav-button-each">
-					<div class='top-nav-button-inside'>
-						明天
-					</div>
-				</div>
-				<div class="top-nav-button-each">
-					<div class='top-nav-button-inside'>
-						本周
-					</div>
-				</div>
-				<div class="top-nav-button-each">
-					<div class='top-nav-button-inside'>
-						下周
-					</div>
-				</div>
-			</div>
 			</div>
 			<div id="main-content">
 			</div>
-		</div>
-		<div id="detail-page">
+			</div>
+			<div id="detail-page">
 			<div class="detail-content-title">
-				<span class="category detail-color">线上 其他</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="title">大数据与信息传播，如果标题再长一点会怎么样呢</span>
+				<span class="category detail-color"></span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="title"></span>
 			</div>
 			<div class="detail-middle clearfix">
 				<img class="detail-img" src="./img/poster-test.png"/>
 				<div class="detail-time-wrap">
 					<div class="starttime-wrap">
 						<div class="intro detail-color">开始</div>
-						<div class="starttime">2014年4月1日18:30</div>
+						<div class="starttime"></div>
 					</div>
 					<div class="endtime-wrap">
 						<div class="intro detail-color">结束</div>
-						<div class="endtime">2014年4月1日18:30</div>
+						<div class="endtime"></div>
 					</div>	
 					<div class="location-wrap">
 						<div class="intro detail-color">地点</div>
-						<div class="location">光华楼东辅楼吴文政报告厅</div>
+						<div class="location"></div>
 					</div>
 				</div>
 			</div>
 			<div class="detail-bottom">
-				<div class="detail-raiser-wrap">
-					<div class="intro">
+				<div class="detail-raiser-wrap clearfix">
+					<div class="intro"> 
 						主办
 					</div>
-					<div class="detail-raiser">
-						复旦大学学生会
-					</div>
 				</div>
-				<div class="detail-speaker-wrap">
+				<div class="detail-speaker-wrap clearfix">
 					<div class="intro">
 						主讲
-					</div>
-					<div class="detail-speaker">
-						aabb
 					</div>
 				</div>
 				<div class="detail-content-wrap">
@@ -148,18 +145,10 @@
 						内容简介
 					</p>
 					<div class="detail-content">
-						星空讲坛总第395期
-
-4月1日（周二）起，复旦大学新闻学院广告学系主任、教授、博士生导师，中国首届“十大广告学人”之一的程士安教授带你用大数据时代的方式体悟“大数据与信息传播”的头脑风暴。
-这，是一场高等教育的风暴
-这，是一次实体课堂与云端课堂的融合
-推倒大学的围墙
-直面慕课（MOOC）时代
-2013年7月，复旦大学与Coursera签订了合作意向书，并于去年年底正式签署了合作协议
-
-2014年4月1日，程士安教授携慕课大数据与信息传
+						
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 		<div id="loading">
@@ -169,7 +158,7 @@
 			<p>Copyright © 2010-2014</p>	
 			<p>复旦学生网 版权所有</p>
 		</div>
-
+	</div>
 	<script type="text/javascript">
 	var cSpeed=9;
 	var cWidth=96;
@@ -258,5 +247,12 @@
 		</div>
 	</div>
 	</script>
+	<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F44a1d00515c576291f0da315ced7bedf' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
 </body>
+
 </html>

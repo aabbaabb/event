@@ -20,6 +20,12 @@ body{
 	text-align:center;
 	width:100%;
 	background-color:#f9f9f9;
+	width:100%;
+
+}
+#total-wrap{
+	width:100%;
+	overflow:hidden;
 }
 #top-nav{
 	width:100%;
@@ -85,9 +91,20 @@ body{
 	margin-right:4px;
 	margin-left:9px;
 	float:left;
+	cursor:pointer;
 }
 .cat-img-wrap img{
 	vertical-align: middle;
+}
+#banner p{
+	font-size:12px;
+	width:80px;
+	margin-left: -80px;
+	left:100%;
+	margin-top:10px;
+	cursor:pointer;
+	position: absolute;
+	color:white;
 }
 #top-nav-button{
 	margin-top:2px;
@@ -125,6 +142,12 @@ body{
 	margin-left:auto;
 	margin-right:auto;
 	padding:15px;
+}
+.main-content-title:hover{
+	text-decoration: underline;
+}
+.main-content-title{
+	cursor:pointer;
 }
 .main-content-title{
 	font-size:14px;
@@ -259,11 +282,20 @@ body{
 	margin-top:15px;
 	width:16px;
 	height:16px;
+	cursor:pointer;
+	display:none;
 }
 #detail-page{
-	width:84%;
+	width:42%;
 	margin-left:auto;
 	margin-right:auto;
+	float:left;
+	margin-left:4%;
+
+}
+#main-page{
+	width:50%;
+	float:left;
 }
 .detail-content-title{
 	font-size:15px;
@@ -312,4 +344,21 @@ body{
 }
 .detail-content-wrap p{
 	font-weight:bold;
+}
+#slide{
+	width:200%;
+}
+.detail-raiser-wrap{
+	width:100%;
+}
+.detail-raiser{
+	margin-right:5px;
+	float:left;
+}
+.speaker-raiser-wrap{
+	width:100%;
+}
+.speaker-raiser{
+	margin-right:5px;
+	float:left;
 }

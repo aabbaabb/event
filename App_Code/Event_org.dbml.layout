@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Event_org">
+  <DataContextMoniker Name="/Event_orgDataContext" />
+  <nestedChildShapes>
+    <classShape Id="bde727db-190c-4e96-a37e-2cae488b28db" absoluteBounds="1.5, 2.5, 2, 1.6169661458333331">
+      <DataClassMoniker Name="/Event_orgDataContext/Event_Org" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7217050f-8a2e-42ed-b85e-cf29098ebe1b" absoluteBounds="1.5150000000000001, 2.96, 1.9700000000000002, 1.0569661458333333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b9c25305-82b4-432f-a14c-59b3066a144f" absoluteBounds="4.875, 2.875, 2, 1.2797265625">
+      <DataClassMoniker Name="/Event_orgDataContext/Event_MinorOrg" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d1853b33-abc9-4f71-b109-a37c5101ae4f" absoluteBounds="4.89, 3.335, 1.9700000000000002, 0.7197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 3.49598307291667); (4.875 : 3.49598307291667)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Event_orgDataContext/Event_Org/Event_Org_Event_MinorOrg" />
+      <nodes>
+        <classShapeMoniker Id="bde727db-190c-4e96-a37e-2cae488b28db" />
+        <classShapeMoniker Id="b9c25305-82b4-432f-a14c-59b3066a144f" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

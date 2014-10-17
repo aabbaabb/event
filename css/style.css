@@ -1360,6 +1360,10 @@ strong{
 		width: 60px;
 	height: 90px;
 }
+.user-event-img.inner:before{
+	content:url("../img/inner.png");
+	position:absolute;
+}
 .user-event-each{
 	color: #656565;
 	font-size: 12px;
@@ -1763,4 +1767,10 @@ span{
 }
 .live-icon:hover{
 	background-image:url("../img/live-hover.png");
+}
+.publisher{
+	float:right;
+	color:#aaaaaa;
+	font-size:12px;
+	margin-right:20px;
 }

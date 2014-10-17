@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Web;
+using System.Web.Security;
+using Newtonsoft.Json;
+
+public partial class uis : System.Web.UI.Page
+{
+    private static TimeSpan autoUnlock = TimeSpan.FromHours(0.5);
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        CookieContainer cookies = new CookieContainer();
+        HttpWebRequest request = WebRequest.Create("http://stu.fudan.edu.cn/user/info") as HttpWebRequest;
+        request.CookieContainer = cookies;
+        HttpCookieCollection oCookies = Request.Cookies;
+        for (int j = 0; j < oCookies.Count; j++)
+        {
+            HttpCookie oCookie = oCookies.Get(j);
+            Cookie oC = new Cookie();
+
+            // Convert between the System.Net.Cookie to a System.Web.HttpCookie...
+            oC.Domain = request.RequestUri.Host;
+            oC.Expires = oCookie.Expires;
+            oC.Name = oCookie.Name;
+            oC.Path = oCookie.Path;
+            oC.Secure = oCookie.Secure;
+            oC.Value = oCookie.Value;
+
+            request.CookieContainer.Add(oC);
+        }
+        request.UserAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.94 Safari/537.4";
+        request.Accept = "text/plain,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+        request.Timeout = 0x1388;
+        HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+        if (response.StatusCode.Equals(HttpStatusCode.OK))
+        {
+            string content = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding("GB2312")).ReadToEnd();
+            Dictionary<string, string> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            String success;
+            if (values.TryGetValue("success", out success))
+            {
+                if (success.Equals("1"))
+                {
+                    String stuno;
+                    String nickname;
+                    values.TryGetValue("stuno", out stuno);
+                    values.TryGetValue("nickname", out nickname);
+                    RedictFromLoginPage(nickname, stuno);
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+    }
+
+    private void RedictFromLoginPage(string nickname, string stuno)
+    {
+        HttpCookie cookie = new HttpCookie("stuno");
+        cookie.HttpOnly = true;
+        cookie.Value = stuno;
+        Response.Cookies.Add(cookie);
+        Response.Write("");
+        FormsAuthentication.RedirectFromLoginPage(nickname, false);
+    }
+}

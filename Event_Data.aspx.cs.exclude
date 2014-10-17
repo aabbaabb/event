@@ -1,0 +1,169 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Xml.Linq;
+using System.Web.UI.WebControls;
+using Darili_api;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+    public partial class Event_Data : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+           
+            //Event_Data，活动信息获取页面
+            if (!IsPostBack)
+            {
+                Response.ContentType = "application/json";
+                Response.Charset = "utf-8";
+                string mode = Request.QueryString["mode"];
+                string data = Request.QueryString["data"];
+                string StartTime = Request.QueryString["StartTime"];
+                string EndTime = Request.QueryString["EndTime"];
+                string Take = Request.QueryString["Take"];
+              string cat = Request.QueryString["cat"];
+                string subcat=Request.QueryString["subcat"];
+                string timeoffset = Request.QueryString["timeoffset"];  
+               // string subcar = Request.QueryString["subcat"];
+                XElement Xml_Root = new XElement("allevents",null);
+                Darili_LinqDataContext ctx=new Darili_LinqDataContext();
+                
+                if (mode == "test")
+                {
+                    try
+                    {
+                        Event[] eve = Event.GetTimeSpan(new DateTime(2000,1,1,1,1,1), new DateTime(9999,12,31,0,0,0), "","",true);
+                        if (eve != null)
+                        {
+                           
+                        }
+                        
+                                                XElement[] Elements = Event.Translte_Xml(eve).ToArray();
+                        if (Elements != null)
+                        {
+                            foreach (XElement element in Elements)
+                            {
+                                Xml_Root.Add(element);
+                            }
+                            Xml_Root.SetAttributeValue("success", 1);
+                        }
+
+                        Response.Write(JsonConvert.SerializeXNode(Xml_Root));
+                       // Response.Write(Xml_Root);
+                    }
+                    catch (Exception exp)
+                    {
+                    }
+                }
+                #region XML处理
+                
+             
+                if (mode == "SingleId")
+                {
+                    try
+                    {
+                        int id = Int32.Parse(data);
+                        Event eve = Event.GetEventById(id);
+                        XElement xml_node = eve.Translate_Xml();
+                        if (xml_node == null)
+                        {
+
+                            Xml_Root.SetAttributeValue("Exception", "没有ID对应的实例");
+                        }
+                        else
+                        {
+                            Xml_Root.Add(new XElement("success",1));
+                            //Xml_Root.Attribute("success").SetValue(1);
+                            Xml_Root.Add(xml_node);
+                            Xml_Root.Add(new XElement("Event", null));
+
+                        }
+                        var json_output = JsonConvert.SerializeXNode(Xml_Root);
+                        JObject json_temp = JObject.Parse(json_output);
+
+                        json_temp["allevents"]["Event"][1].Remove();
+                        Response.Write(/*JsonConvert.SerializeXNode(Xml_Root)*/json_temp);
+
+                    }
+                    catch (Exception exp)
+                    {
+                        Xml_Root.SetAttributeValue("Exception", exp.Message);
+                        string result = JsonConvert.SerializeXNode(Xml_Root);
+                        Response.Write(JsonConvert.SerializeXNode(Xml_Root));
+                    }
+                }
+                if (mode == null)
+                {
+                    try
+                    {
+                        Event[] events = new Event[1];
+                        if (Take == null | Take == "0")
+                        {
+                            events = Event.GetTimeSpan(DateTime.Now.Date, DateTime.Now.Date+new TimeSpan(Int32.Parse(timeoffset)+1,0,0,0),cat,subcat,true);
+                        }
+                        else
+                        {
+                            events = Event.GetTimeSpan(DateTime.Parse(StartTime), DateTime.Parse(EndTime),int.Parse(Take));
+
+                        }
+                        XElement[] Elements = Event.Translte_Xml(events).ToArray();
+                        if (Elements != null)
+                        {
+                            foreach (XElement element in Elements)
+                            {
+                                Xml_Root.Add(element);
+                            }
+                            Xml_Root.SetAttributeValue("success", 1);
+                        }
+
+                        Response.Write(JsonConvert.SerializeXNode(Xml_Root));
+                    }
+
+                    catch (Exception exp)
+                    {
+                        Xml_Root.SetAttributeValue("Exception", exp.Message);
+                        Response.Write(JsonConvert.SerializeXNode(Xml_Root));
+                    }
+                }
+                if (mode == "Publisher")
+                {
+                    try
+                    {
+                        Event[] events = new Event[1];
+                        if (Take == null | Take == "0")
+                        {
+                            events = Event.GetPublisherEntries(data);
+                        }
+                        else
+                        {
+                            events = Event.GetPublisherEntries(data, int.Parse(Take));
+
+                        }
+                        XElement[] Elements = Event.Translte_Xml(events).ToArray();
+                        if (Elements != null)
+                        {
+                            foreach (XElement element in Elements)
+                            {
+                                Xml_Root.Add(element);
+                            }
+                            Xml_Root.SetAttributeValue("success", 1);
+                        }
+
+                        Response.Write(JsonConvert.SerializeXNode(Xml_Root));
+                    }
+
+                    catch (Exception exp)
+                    {
+                        Xml_Root.SetAttributeValue("Exception", exp.Message);
+                        Response.Write(JsonConvert.SerializeXNode(Xml_Root));
+                    }
+                }
+           
+#endregion
+
+            }
+        }
+    }

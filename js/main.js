@@ -23,6 +23,44 @@
 
 	coded by danny ShanYu 
 **/
+function getCookie(c_name){
+		if(document.cookie.length>0){
+		   c_start=document.cookie.indexOf(c_name + "=")
+		   if(c_start!=-1){ 
+		     c_start=c_start + c_name.length+1 
+		     c_end=document.cookie.indexOf(";",c_start)
+		     if(c_end==-1) c_end=document.cookie.length
+		     return unescape(document.cookie.substring(c_start,c_end))
+		   }
+		}
+		return ""
+	}
+var bs={
+    versions:function(){
+       var u = navigator.userAgent, app = navigator.appVersion;
+       return {//移动终端浏览器版本信息
+            trident: u.indexOf('Trident') > -1, //IE内核
+            presto: u.indexOf('Presto') > -1, //opera内核
+            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+            mobile: !!u.match(/AppleWebKit.*Mobile.*/)||!!u.match(/AppleWebKit/), //是否为移动终端
+            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+            android: u.indexOf('Android') > -1 , //android终端或者uc浏览器
+            iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+            iPad: u.indexOf('iPad') > -1, //是否iPad
+            webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部	
+        };
+     }(),
+     language:(navigator.browserLanguage || navigator.language).toLowerCase()
+} 
+if(bs.versions.mobile){
+    if(bs.versions.android||bs.versions.iPhone||bs.versions.iPad||bs.versions.ios){
+    	if(getCookie("notphone")=="true")
+    		;
+    	else
+        	window.location.href="http://stu.fudan.edu.cn/event/mainphone.html";
+    }
+}
 $(document).ready(function(){
 	var lovetag=0;
 	var pintag=0;
@@ -57,6 +95,14 @@ $(document).ready(function(){
 	var org=false;
 	var updateuserinfo=function(){
 		$("#login-addition-box").removeClass("stretch");
+		/**$.ajax({
+			url:"http://stu.fudan.edu.cn/event/userupdate.aspx",
+			type:"get",
+			async:false,
+			success:function(data){
+				console.log(data);
+			}
+		})**/
 		$.ajax({		//查询用户信息
 			url:'http://stu.fudan.edu.cn/event/UserInfo.aspx',  	
 			type:'get',
@@ -68,11 +114,26 @@ $(document).ready(function(){
 			},
 			success:function(json){	//有返回值
 				json=json.User;
+				var token=json.token;
+				$.ajax({
+					url:"http://stu.fudan.edu.cn/teleport/pilot/fetch?appid=ac81396d2793d0911c170980b5cbdc4e0977bc957beb5b178241efe41317933d&token="+token,
+					async:true,
+					type:"get",
+					dataType:"JSON",
+					success:function(data){
+						if(data.username==null||(data.stuid==null)){	//user信息不同步 注销
+							window.location.href="http://stu.fudan.edu.cn/event/logout.aspx";
+						}
+					}
+				})
 				if(getCookie(".ASPXAUTH")!=null&&json.Nickname!=null){	//成功
 					user.userID=json.uid;
 					user.Name=json.Nickname;
 					if(json.IsOrg=="true"){	//组织账号
 						org=true;
+						//我的活动中对于组织没有我参加的和我感兴趣的
+						$("#interest-button").remove();
+						$("#attend-button").remove();
 						if($("#exitorg").size()==0){
 							$("#login-addition-box ul").append("<li id='exitorg'>切换组织</li>");
 						}
@@ -83,7 +144,7 @@ $(document).ready(function(){
 								type: 'get',
 								async: false
 							}).done(function() {
-								updateuserinfo();
+								window.location.href=document.URL;
 							}).fail(function(){
 				
 							})
@@ -179,18 +240,7 @@ $(document).ready(function(){
 							"<li class='moreop'></li></ul></div>";
 	var selectoutput="<div id='picstyle-wrong'><ul id='selectoutput'><li class='selectoutput-each'><div class='clickbox click click-box-round' id='xml'></div><div class='output-intro'>导出报名详情</div></li><li class='selectoutput-each'><div class='clickbox click-box-round' id='csv'></div><div class='output-intro'>导出飞信格式</div></li></ul></div>";
 	
-	function getCookie(c_name){
-		if(document.cookie.length>0){
-		   c_start=document.cookie.indexOf(c_name + "=")
-		   if(c_start!=-1){ 
-		     c_start=c_start + c_name.length+1 
-		     c_end=document.cookie.indexOf(";",c_start)
-		     if(c_end==-1) c_end=document.cookie.length
-		     return unescape(document.cookie.substring(c_start,c_end))
-		   }
-		}
-		return ""
-	}
+	
 	function data(){
 		this.cat="";
 		this.subcat="";
@@ -526,7 +576,7 @@ $(document).ready(function(){
 					}
 				}
 				else{
-					$("#detail-content .detail-speaker").hide();
+					$("#detail-content .detail-raiser").hide();
 				}
 				if(json.Type="讲座")
 				{
@@ -821,7 +871,12 @@ $(document).ready(function(){
 					if(query=="#user-raise"){	//我发起的
 						
 						$(query+" .user-event-each:eq("+i+") ul li.moreop").append("<a href='http://stu.fudan.edu.cn/event/addevent.aspx?"+$(query+" .user-event-each:eq("+i+")").attr("id")+"'><div class='change-inf'>修改信息</div></a><div class='change'>关闭活动</div><div class='see-register'>报名情况</div>");
-						if(cat[i].ViewFlag==-1||cat[i].ViewFlag==-4)
+						
+						if(cat[i].ViewFlag==-1||cat[i].ViewFlag==-5){
+							$(query+" .user-event-each:eq("+i+") .user-event-img:last").addClass("inner");
+						}
+					
+						if(cat[i].ViewFlag==-5||cat[i].ViewFlag==-4)
 						{
 							$(query+" .user-event-each:eq("+i+") ul li.moreop .change").html("开启活动");
 							$(query+" .user-event-each:eq("+i+") ul li.moreop .change").attr("class","change");
@@ -1456,7 +1511,6 @@ $(document).ready(function(){
 		var style1=new style(json.Type);
 		color=style1.color;
 		cat=style1.cat;
-		console.log(json.Id);
 		if(json.Id=="260"){
 			$("#main-content .main-content-words:eq("+i+")").append("<div class='live-icon'></div>");
 			$("#main-content .main-content-words:eq("+i+") .live-icon").click(function(){
@@ -1880,7 +1934,6 @@ $(document).ready(function(){
 	}
 
 
-
 	function tagbind(){
 		$(".click-box").click(function(){
 			if($(this).hasClass("choose"))
@@ -1906,8 +1959,9 @@ $(document).ready(function(){
 			uncover();
 		})
 		$("#loginnow").click(function(){
-			if($("#loginnow").html()!="确定")
-				window.location.href="http://stu.fudan.edu.cn/auth/auth.aspx?returnurl=http://stu.fudan.edu.cn/event/auth.aspx";
+			if($("#loginnow").html()!="确定"){
+				window.location.href="http://stu.fudan.edu.cn/event/login.aspx?returnurl=http://stu.fudan.edu.cn/event/auth.aspx";
+			}
 			else
 			{
 				var id=$("#selectoutput").attr("name");
@@ -1965,10 +2019,11 @@ $(document).ready(function(){
 				type: 'get',
 				async: false
 			}).done(function() {
-				updateuserinfo();
+				window.location.href=document.URL;
 			}).fail(function(){
 
 			})
+
 		})
 		$(document).on("mouseover",".main-content-title",adddecoration);
 		$(document).on("mouseout",".main-content-title",function(){
@@ -1977,8 +2032,8 @@ $(document).ready(function(){
 		})
 		$("#personal-activity").click(function(){
 			userinit();
-			updateuser("Subscribed",0);
-			
+			$("#no-content-alert").hide();
+			$("#banner-user td:first").trigger("click");
 			
 		})
 		$("#show-photo").mouseover(function(){
@@ -2017,7 +2072,8 @@ $(document).ready(function(){
 			if(org==true)
 				window.open("http://stu.fudan.edu.cn/event/org.html?"+$("#username").html());
 			else
-				window.open("http://stu.fudan.edu.cn/user/profile/update");
+				;
+				//window.open("http://stu.fudan.edu.cn/user/profile/update");
 		})
 
 		$(document).keydown(function(){

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Darili" Class="Darili_UserDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.73.4.41;Initial Catalog=Darili;Persist Security Info=True;User ID=darili" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="416ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Event_Users" Member="Event_Users">
+    <Type Name="Event_Users">
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="User_CellPhone" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="User_Realname" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="User_LastLoginTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="User_Stuno" Type="System.String" DbType="NChar(11)" CanBeNull="true" />
+      <Column Member="User_Token" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
